@@ -1,0 +1,184 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momin Ali</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        .bg-layer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .dark-curtain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: -1;
+        }
+        .login-box {
+            width: 400px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            text-align: center;
+        }
+
+        h2 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .input-field {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 10px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+            outline: none;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .input-field input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .input-field input:focus {
+            border-bottom-color: #ffffff;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .remember-section {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .remember-section input {
+            margin-right: 8px;
+            accent-color: #ffffff;
+        }
+
+        .forgot-pass {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .forgot-pass:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ffffff;
+            border: none;
+            border-radius: 4px;
+            color: #000000;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 25px;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .signup-prompt {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .signup-prompt a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .signup-prompt a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-layer">
+        <img src="c:\Users\TOSHIBA\Desktop\images.jfif" alt="Background">
+    </div>
+
+    <div class="dark-curtain"></div>
+    <div class="login-box">
+        <h2>Login</h2>
+        <form action="#">
+            
+            <div class="input-field">
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="input-field">
+                <input type="password" placeholder="Enter your password" required>
+            </div>
+            
+            <div class="form-options">
+                <label class="remember-section">
+                    <input type="checkbox"> Remember me
+                </label>
+                <a href="#" class="forgot-pass">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="submit-btn">Log In</button>
+            
+            <div class="signup-prompt">
+                Don't have an account? <a href="#">Register</a>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>

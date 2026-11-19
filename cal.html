@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            width: 320px;
+            padding: 20px;
+            background: #1e1e2f;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px #0008;
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        #display {
+            width: 100%;
+            height: 70px;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 30px;
+            text-align: right;
+            color: white;
+            background: #111;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 55px;
+            border: none;
+            border-radius: 10px;
+            font-size: 22px;
+            cursor: pointer;
+            background: #34344a;
+            color: white;
+        }
+
+        button:hover {
+            background: #50506b;
+        }
+
+        .operator {
+            background: #ff9500;
+        }
+
+        .operator:hover {
+            background: #e68600;
+        }
+
+        .clear {
+            background: #e63946;
+        }
+
+        .equal {
+            background: #16a085;
+            grid-column: span 2;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h2>My Calculator</h2>
+
+        <input type="text" id="display"
+               placeholder="0" readonly>
+
+        <div class="buttons">
+
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="deleteNumber()">DEL</button>
+            <button class="operator" onclick="addOperator('%')">%</button>
+            <button class="operator" onclick="addOperator('/')">÷</button>
+
+            <button onclick="addNumber('7')">7</button>
+            <button onclick="addNumber('8')">8</button>
+            <button onclick="addNumber('9')">9</button>
+            <button class="operator" onclick="addOperator('*')">×</button>
+
+            <button onclick="addNumber('4')">4</button>
+            <button onclick="addNumber('5')">5</button>
+            <button onclick="addNumber('6')">6</button>
+            <button class="operator" onclick="addOperator('-')">−</button>
+
+            <button onclick="addNumber('1')">1</button>
+            <button onclick="addNumber('2')">2</button>
+            <button onclick="addNumber('3')">3</button>
+            <button class="operator" onclick="addOperator('+')">+</button>
+
+            <button class="zero" onclick="addNumber('0')">0</button>
+            <button onclick="addNumber('.')">.</button>
+            <button class="equal" onclick="calculate()">=</button>
+
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById("display");
+
+        function addNumber(number) {
+            display.value += number;
+        }
+
+        function addOperator(operator) {
+            if (display.value === "") {
+                return;
+            }
+
+            display.value += operator;
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+
+        function deleteNumber() {
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            try {
+                let expression = display.value;
+
+                if (!/^[0-9+\-*/%. ]+$/.test(expression)) {
+                    throw new Error("Invalid");
+                }
+
+                let result = Function(
+                    '"use strict"; return (' + expression + ')'
+                )();
+
+                if (!Number.isFinite(result)) {
+                    display.value = "Error";
+                    return;
+                }
+
+                display.value = result;
+
+            } catch {
+                display.value = "Error";
+            }
+        }
+    </script>
+
+</body>
+</html>
